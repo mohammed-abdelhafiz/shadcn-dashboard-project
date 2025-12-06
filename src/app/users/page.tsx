@@ -179,6 +179,11 @@ export const getUsersData = async (): Promise<User[]> => {
   ];
 };
 
+export const metadata = {
+  title: "Users",
+  description: "Users page",
+};
+
 export default async function UsersPage() {
   const users = await getUsersData();
   return (

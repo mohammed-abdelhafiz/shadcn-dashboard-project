@@ -160,6 +160,11 @@ const getPaymentsData = async (): Promise<Payment[]> => {
   ];
 };
 
+export const metadata = {
+  title: "Payments",
+  description: "Payments page",
+};
+
 export default async function PaymentsPage() {
   const payments = await getPaymentsData();
   return (

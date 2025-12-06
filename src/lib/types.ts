@@ -8,7 +8,7 @@ export type User = {
   role: "user" | "admin";
 };
 
-export type Payment = User & {
+export type Payment = Omit<User, "role" | "phone" | "address"> & {
   amount: number;
   status: "pending" | "processing" | "success" | "failed";
 };

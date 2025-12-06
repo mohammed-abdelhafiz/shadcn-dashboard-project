@@ -15,6 +15,14 @@ import Link from "next/link";
 import { getUsersData } from "../page";
 import { notFound } from "next/navigation";
 
+export const generateMetadata = async ({ params }: { params: Promise<{ username: string }> }) => {
+  const { username } = await params;
+  return {
+    title: username,
+    description: `Details for ${username}`,
+  };
+};
+
 export default async function UserPage({
   params,
 }: {
