@@ -10,8 +10,11 @@ export const Navbar = () => {
       {/* Left */}
       <SidebarTrigger />
       {/* Right */}
-      <div className="flex items-center gap-4">
-        <Link href="/">Dashboard</Link>
+      <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3">
+          <Link href="/users" className="hover:underline hover:text-primary text-sm">Users</Link>
+          <Link href="/payments" className="hover:underline hover:text-primary text-sm">Payments</Link>
+        </div>
         <ModeToggle />
         <UserMenu />
       </div>

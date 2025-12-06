@@ -1,4 +1,4 @@
-import { AppLineChart } from "@/components/AppLineChart";
+import { AppLineChart } from "@/components/charts/AppLineChart";
 import CardList from "@/components/CardList";
 import { UserBadges, UserInfo } from "@/components/User";
 import { UserCard } from "@/components/User/UserCard";
@@ -12,8 +12,20 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { getUsersData } from "../page";
+import { notFound } from "next/navigation";
 
-export default function UserPage() {
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ username: string }>;
+}) {
+  const { username } = await params;
+  const users = await getUsersData();
+  const user = users.find((user) => user.username === username);
+  if (!user) {
+    return notFound();
+  }
   return (
     <div>
       <Breadcrumb>
@@ -31,7 +43,7 @@ export default function UserPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>John Doe</BreadcrumbPage>
+            <BreadcrumbPage>{user.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -42,7 +54,7 @@ export default function UserPage() {
           {/* User Badges Container */}
           <UserBadges />
           {/* User Information Container */}
-          <UserInfo />
+          <UserInfo user={user} />
           {/* Card list Container */}
           <div className="p-4 rounded-lg bg-primary-foreground">
             <CardList title="latest transactions" />
@@ -50,7 +62,7 @@ export default function UserPage() {
         </div>
         {/* Right */}
         <div className="w-full xl:w-2/3 space-y-6">
-          <UserCard />    
+          <UserCard user={user} />
           <div className="p-4 rounded-lg bg-primary-foreground">
             <AppLineChart />
           </div>

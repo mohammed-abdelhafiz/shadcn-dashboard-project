@@ -1,6 +1,6 @@
-import { AppAreaChart } from "@/components/AppAreaChart";
-import { AppBarchart } from "@/components/AppBarchart";
-import { AppPieChart } from "@/components/AppPieChart";
+import { AppAreaChart } from "@/components/charts/AppAreaChart";
+import { AppBarchart } from "@/components/charts/AppBarchart";
+import { AppPieChart } from "@/components/charts/AppPieChart";
 import CardList from "@/components/CardList";
 import { TodoList } from "@/components/TodoList";
 

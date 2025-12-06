@@ -3,8 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { EditUser } from "./EditUser";
+import { User } from "@/lib/types";
 
-export const UserInfo = () => {
+export const UserInfo = ({user}: {user: User}) => {
   return (
     <div className="p-4 rounded-lg bg-primary-foreground">
       <div className="flex items-center justify-between">
@@ -23,23 +24,23 @@ export const UserInfo = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="font-semibold">Username :</span>
-          <span>John Doe</span>
+          <span>{user.username}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-semibold">Email :</span>
-          <span>JohnDoe@gmail.com</span>
+          <span>{user.email}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-semibold">Phone :</span>
-          <span>+1234567890</span>
+          <span>{user.phone}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-semibold">Address :</span>
-          <span>123 Main St, Anytown, USA</span>
+          <span>{user.address}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-semibold">Role :</span>
-          <Badge>Admin</Badge>
+          <Badge>{user.role}</Badge>
         </div>
       </div>
       <p className="text-sm text-muted-foreground mt-4">Member since 2024</p>
